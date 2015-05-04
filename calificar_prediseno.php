@@ -7,7 +7,7 @@ class c_calificar_prediseno extends super_controller {
 
     public function add()
 	{
-            $prediseno = new prediseno($this->post);
+            //$prediseno = new prediseno($this->post);
             $codp = $this->post->codigo;
             if(is_empty($codp))
             {throw_exception("Error, falta seleccionar prediseño");}
