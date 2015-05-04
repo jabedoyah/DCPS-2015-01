@@ -107,6 +107,31 @@ class db {
                 }
                 break;
 
+                case "dispositivo":
+                switch($options['lvl2'])
+                {
+                    case "normal":
+                        $codigo=mysqli_real_escape_string($this->cn,$object->get('codigo'));
+                        $costo=mysqli_real_escape_string($this->cn,$object->get('costo'));
+                        $funcion=mysqli_real_escape_string($this->cn, ($object->get('funcion')));
+                        $this->do_operation("INSERT INTO dispositivo (codigo, costo, funcion) VALUES ('$codigo', '$costo', '$funcion');");
+                        break;
+
+                }
+                break;
+
+                case "diseno":
+                switch($options['lvl2'])
+                {
+                    case "normal":
+                        $codigo=mysqli_real_escape_string($this->cn,$object->get('codigo'));
+                        $imagen=mysqli_real_escape_string($this->cn,$object->get('imagen'));
+                        $dispositivo=mysqli_real_escape_string($this->cn, ($object->get('dispositivo')));
+                        $this->do_operation("INSERT INTO diseno (codigo, imagen, dispositivo) VALUES ('$codigo', '$imagen', '$dispositivo');");
+                        break;
+                }
+                break;
+
 
 
             default: break;
@@ -172,6 +197,15 @@ class db {
                         $info = $this->get_data("select * from empleado where cedula='$ced';");
                         break;
                 }
+                break;
+
+                case "dispositivo":
+                    switch($option['lvl2'])
+                    {
+                        case "all" :
+                            $info=$this->get_data("SELECT * FROM dispositivo;"); 
+                            break;
+                    }
                 break;
 
             /*case "cliente":
